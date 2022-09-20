@@ -8,6 +8,8 @@
   --grey-color: #f5f4fa;
   --contacts-grey-color: rgba(255, 255, 255, 0.6);
   --bg-color-dark: #2f303a;
+  --animation-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-duration: 2250ms;
 }
 
 body {
@@ -120,6 +122,8 @@ p {
 }
 
 .site-nav .site-nav-link {
+  position: relative;
+
   display: inline-block;
   padding-top: 32px;
   padding-bottom: 32px;
@@ -130,6 +134,8 @@ p {
   text-transform: capitalize;
 
   color: var(--title-text-color);
+
+  transition: color var(--animation-duration) var(--animation-function);
 }
 
 .site-nav .site-nav-link:hover,
@@ -139,6 +145,18 @@ p {
 
 .site-nav .site-nav-link.current {
   color: var(--primary-color);
+}
+
+.site-nav .site-nav-link.current::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+
+  height: 4px;
+  width: 100%;
+  background: var(--primary-color);
+  border-radius: 2px;
 }
 
 /* Contancts */
@@ -186,6 +204,8 @@ p {
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
+
+  transition: color var(--animation-duration) var(--animation-function);
 }
 
 .item-email.grey,
@@ -350,6 +370,33 @@ p {
   display: block;
 }
 
+.work-list .thumb {
+  position: relative;
+}
+
+.work-list .image {
+  display: block;
+}
+
+.work-list .title {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  padding-top: 27px;
+  padding-bottom: 27px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--white-color);
+
+  background: rgba(47, 48, 58, 0.8);
+}
+
 /* Our team */
 .team {
   background-color: var(--grey-color);
@@ -431,6 +478,8 @@ p {
   height: 100%;
 
   color: inherit;
+
+  transition: color var(--animation-duration) var(--animation-function);
 }
 
 .socials-list .link:hover,
@@ -450,6 +499,8 @@ p {
   background-color: var(--primary-color);
 
   opacity: 0;
+
+  transition: opacity var(--animation-duration) var(--animation-function);
 }
 
 .socials-list .link:hover::before,
@@ -508,6 +559,9 @@ p {
   border: 1px solid var(--icon-color);
 
   color: inherit;
+
+  transition: color var(--animation-duration) var(--animation-function),
+    border-color var(--animation-duration) var(--animation-function);
 }
 
 .clients-list .link:hover,
@@ -545,6 +599,10 @@ p {
   color: var(--title-text-color);
 
   background-color: var(--grey-color);
+
+  transition: color var(--animation-duration) var(--animation-function),
+    background-color var(--animation-duration) var(--animation-function),
+    box-shadow var(--animation-duration) var(--animation-function);
 }
 
 .work-list-filter .button:hover,
@@ -580,6 +638,8 @@ p {
 
 .our-work-list .our-work-link {
   display: block;
+
+  transition: box-shadow var(--animation-duration) var(--animation-function);
 }
 
 .our-work-list .our-work-link:hover,
@@ -594,6 +654,40 @@ p {
 
 .our-work-list > .item:nth-child(n + 4) {
   margin-top: 30px;
+}
+
+.our-work-list .thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.our-work-list .text-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(33, 150, 243, 0.9);
+
+  transform: translateY(100%);
+  transition: transform var(--animation-duration) var(--animation-function);
+}
+
+.our-work-list .text {
+  padding: 24px;
+
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--white-color);
+}
+
+.our-work-list .our-work-link:hover .text-container,
+.our-work-list .our-work-link:focus .text-container {
+  transform: translateY(0);
 }
 
 .our-work-list .image {
