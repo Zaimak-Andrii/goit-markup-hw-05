@@ -9,7 +9,7 @@
   --contacts-grey-color: rgba(255, 255, 255, 0.6);
   --bg-color-dark: #2f303a;
   --animation-function: cubic-bezier(0.4, 0, 0.2, 1);
-  --animation-duration: 2250ms;
+  --animation-duration: 250ms;
 }
 
 body {
@@ -577,6 +577,81 @@ p {
 }
 
 /* ================================================================= */
+/* =====================Modal======================================= */
+body.modal-open {
+  overflow: hidden;
+}
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+
+  background: rgba(0, 0, 0, 0.2);
+  transition: opacity var(--animation-duration) var(--animation-function);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.backdrop > .modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 528px;
+  height: 521px;
+  padding: 40px;
+
+  border-radius: 4px;
+  background: var(--white-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform var(--animation-duration) var(--animation-function);
+}
+
+.modal > .modal-button {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+
+  color: var(--black-color);
+
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+}
+
+.modal > .modal-button:hover,
+.modal > .modal-button:focus {
+  color: var(--primary-color);
+}
+
+.modal .icon {
+  width: 18px;
+  height: 18px;
+
+  transition: color var(--animation-duration) var(--animation-function);
+}
+
 /* =====================Main for page Portfolio===================== */
 .work-list-filter {
   display: flex;
